@@ -1,87 +1,37 @@
 //Definición de clases
+import {Cliente} from "./Cliente.js";
+import {CuentaCorriente} from "./CuentaCorriente.js";
 
-class Cliente
-{
-    nombreCliente;
-    dniCliente;
-    rucCliente;
-}
+const cliente = new Cliente();
+cliente.nombreCliente = "Leonardo";
+cliente.dniCliente= "1231231231";
+cliente.rucCliente = "1231231";
 
-class CuentaCorriente {
-    numero;
-    #saldo;//atributo privado, solo puede ser modificado por la clase, también se puede poner _antes del nombre para que otros desarrolladores lo traten como privado, pero js no lo trata como privado
-    agencia;
-
-    constructor() {
-        this.#saldo = 0;
-        this.numero = "";
-        this.agencia ="";
-    }
-
-    depositoEnCuenta(valor) {
-        if (valor > 0) {
-           this.#saldo += valor;
-        }
-        return this.#saldo;
-    }
-
-    retirarDeCuenta(valor) {
-        if (valor <= this.#saldo) {
-            this.#saldo -= valor;
-        }
-        return this.#saldo;
-    }
-
-    verSaldo () {
-        return this.#saldo;
-    }
-}
-
-cuentaLeonardo = new CuentaCorriente();
+const cuentaLeonardo = new CuentaCorriente();
+cuentaLeonardo.numero = "1";
+cuentaLeonardo.agencia = "001";
+cuentaLeonardo.cliente = cliente;
 
 let saldo = cuentaLeonardo.verSaldo();
-console.log(`El saldo actual es ${saldo}`);
 
-saldo = cuentaLeonardo.depositoEnCuenta(100);
-console.log(`El saldo actual es ${saldo}`);
 
-saldo = cuentaLeonardo.retirarDeCuenta(40);
-console.log(`El saldo actual es ${saldo}`);
+saldo = cuentaLeonardo.depositoEnCuenta(200);
+console.log(`El saldo actual de Leonardo es ${saldo}`);
 
-/* 
-const cliente1 = new Cliente();
-cliente1.nombreCliente = "Diana";
-cliente1.dniCliente = "1234567890";
-cliente1.rucCliente = "12344";
-
-const cuentaCorriente1 = new CuentaCorriente();
-cuentaCorriente1.numero = "1231231";
-cuentaCorriente1.saldo = 5000;
-cuentaCorriente1.agencia = 1001;
+saldo = cuentaLeonardo.retirarDeCuenta(50);
+console.log(`El saldo actual de Leonardo es ${saldo}`);
 
 const cliente2 = new Cliente();
 cliente2.nombreCliente = "Sofía";
-cliente2.dniCliente = "1234567891";
-cliente2.rucCliente = "12345";
+cliente2.dniCliente= "1231231232";
+cliente2.rucCliente = "1231232";
 
-const cuentaCorriente2 = new CuentaCorriente();
-cuentaCorriente2.numero = "1231232";
-cuentaCorriente2.saldo = 2000;
-cuentaCorriente2.agencia = 1001;
+const cuentaSofia = new CuentaCorriente();
+cuentaSofia.numero = "2";
+cuentaSofia.agencia = "002";
+cuentaSofia.cliente = cliente2;
 
-console.log(cuentaCorriente2.saldo);
-cuentaCorriente2.depositoEnCuenta(100);
-console.log(cuentaCorriente2.saldo);
-cuentaCorriente2.depositoEnCuenta(500);
-console.log(cuentaCorriente2.saldo);
-
-const cliente3 = new Cliente();
-cliente3.nombreCliente = "Leonardo";
-cliente3.dniCliente = "1234567892";
-cliente3.rucCliente = "12345";
-
-const cuentaCorriente3 = new CuentaCorriente();
-cuentaCorriente3.numero = "1231233";
-cuentaCorriente3.saldo = 2000;
-cuentaCorriente3.agencia = 1001;
-*/
+cuentaLeonardo.transferirParaCuenta(100,cuentaSofia);
+let saldoSofia = cuentaSofia.verSaldo();
+console.log(`El saldo actual de Sofía es ${saldoSofia}`);
+console.log(`El saldo actual de Leonardo es ${cuentaLeonardo.verSaldo()}`);
