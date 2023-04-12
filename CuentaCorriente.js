@@ -7,7 +7,7 @@ export class CuentaCorriente {
     #saldo;//atributo privado, solo puede ser modificado por la clase, también se puede poner _antes del nombre para que otros desarrolladores lo traten como privado, pero js no lo trata como privado
    
     set cliente(valor) {
-        if (valor instanceof Cliente)
+        if (valor instanceof Cliente)//evita que al atributo cliente se le pueda asignar otro valor que no sea un objeto Cliente
             this.#cliente = valor;
     }
 
@@ -15,10 +15,10 @@ export class CuentaCorriente {
         return this.#cliente;
     }
 
-    constructor() {
-        this.#cliente = null;
-        this.numero = "";
-        this.agencia ="";
+        constructor (cliente, numero, agencia) {
+        this.cliente = cliente;
+        this.numero = numero;
+        this.agencia =agencia;
         this.#saldo = 0;
     }
 
