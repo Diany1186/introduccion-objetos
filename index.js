@@ -16,8 +16,6 @@ let saldo = cuentaLeonardo.verSaldo();
 
 
 saldo = cuentaLeonardo.depositoEnCuenta(200);
-console.log(`El saldo actual de Leonardo es ${saldo}`);
-
 saldo = cuentaLeonardo.retirarDeCuenta(50);
 console.log(`El saldo actual de Leonardo es ${saldo}`);
 
@@ -31,7 +29,12 @@ cuentaSofia.numero = "2";
 cuentaSofia.agencia = "002";
 cuentaSofia.cliente = cliente2;
 
-cuentaLeonardo.transferirParaCuenta(100,cuentaSofia);
+console.log(cuentaSofia.cliente);
+
+cuentaSofia.cliente = 0;
+
+console.log(cuentaSofia.cliente);
+/*cuentaLeonardo.transferirParaCuenta(100,cuentaSofia);
 let saldoSofia = cuentaSofia.verSaldo();
 console.log(`El saldo actual de Sofía es ${saldoSofia}`);
-console.log(`El saldo actual de Leonardo es ${cuentaLeonardo.verSaldo()}`);
+console.log(`El saldo actual de Leonardo es ${cuentaLeonardo.verSaldo()}`);*/

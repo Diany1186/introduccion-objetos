@@ -1,11 +1,22 @@
+import { Cliente } from "./Cliente.js";
+
 export class CuentaCorriente {
-    cliente;
+    #cliente;
     numero;
-    #saldo;//atributo privado, solo puede ser modificado por la clase, también se puede poner _antes del nombre para que otros desarrolladores lo traten como privado, pero js no lo trata como privado
     agencia;
+    #saldo;//atributo privado, solo puede ser modificado por la clase, también se puede poner _antes del nombre para que otros desarrolladores lo traten como privado, pero js no lo trata como privado
+   
+    set cliente(valor) {
+        if (valor instanceof Cliente)
+            this.#cliente = valor;
+    }
+
+    get cliente() {
+        return this.#cliente;
+    }
 
     constructor() {
-        this.cliente = null;
+        this.#cliente = null;
         this.numero = "";
         this.agencia ="";
         this.#saldo = 0;
