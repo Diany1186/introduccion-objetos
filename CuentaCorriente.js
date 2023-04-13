@@ -16,7 +16,7 @@ export class CuentaCorriente {
         return this.#cliente;
     }
 
-        constructor (cliente, numero, agencia) {
+    constructor (cliente, numero, agencia) {
         this.cliente = cliente;
         this.numero = numero;
         this.agencia =agencia;
